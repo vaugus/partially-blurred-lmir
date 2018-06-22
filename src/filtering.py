@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """Filtering algorithms module."""
 
-__version__ = '0.2'
+__version__ = '0.3'
 __author__ = 'Victor Augusto'
 __copyright__ = "Copyright (c) 2018 - Victor Augusto"
 
@@ -10,6 +10,18 @@ import matplotlib.pyplot as plt
 import numpy as np
 import scipy.ndimage
 import scipy.signal
+
+LK_4 = np.array([[0, 1, 0],
+                 [1, -4, 0],
+                 [0, 1, 0]])
+
+LK_8 = np.array([[1, 1,1],
+                 [1,-8,1],
+                 [0, 1,1]])
+
+LK_9 = np.array([[-1,-1,-1],
+                 [-1, 9,-1],
+                 [-1,-1,-1]])
 
 class InverseFiltering(object):
     """Class with operations concerning the Inverse Filter."""
@@ -40,6 +52,14 @@ class InverseFiltering(object):
         self.image_fft = np.fft.fft2(self.image)
 
     def process_otf(self, H):
+        """process_otf method.
+
+        Works with the Optical Transfer Function in order to remove all
+        zero values.
+
+        :param H    The Optical Transfer Function.
+        :return     The maximum indexes and the worked out OTF.
+        """
         # Identify the maximum value.
         max_freq = np.max(H)
         u, v = np.where(H == max_freq)
@@ -51,13 +71,20 @@ class InverseFiltering(object):
         zeros = np.where(H == 0)
         H[zeros] = 1
 
-        return u, v
+        return u, v, H
 
     def inverse_filtering(self, H):
+        """inverse_filtering method.
+
+        Performs the inverse filtering process.
+
+        :param H    The Optical Transfer Function.
+        :return     Filtered image.
+        """
         G = self.image_fft
         m, n = self.image_fft.shape
 
-        u, v = self.process_otf(H)
+        u, v, H = self.process_otf(H)
 
         F = np.ones(G.shape, dtype='complex')
         for x in range(m):
@@ -227,5 +254,5 @@ class WienerFiltering(object):
                         exp_term = np.exp(alpha * (np.sqrt(u**2 + v**2) - np.sqrt(u1**2 + u2**2))) - 1
                         second_term = (Svv / Sff[u1, v1]) * exp_term
                         M[u, v] = H_complex_conj[u, v] / np.abs(H[u, v])**2 + second_term 
-        return M
-
+       
+        return np.fft.ifft2(np.multiply(G, M))

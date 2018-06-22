@@ -2,10 +2,11 @@
 # -*- coding: utf-8 -*-
 """Tools module."""
 
-__version__ = '0.1'
+__version__ = '0.2'
 __author__ = 'Victor Augusto'
 __copyright__ = "Copyright (c) 2018 - Victor Augusto"
 
+import matplotlib.colors as colors
 import matplotlib.pyplot as plt
 import numpy as np
 import scipy.ndimage
@@ -90,3 +91,8 @@ class Tools(object):
             plt.imshow(np.abs(image), cmap="gray")
 
         plt.show()
+
+
+    def rgb2hsv(self, img):
+        return colors.rgb_to_hsv(img)
+
