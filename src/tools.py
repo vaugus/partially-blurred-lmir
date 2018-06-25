@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """Tools module."""
 
-__version__ = '0.2'
+__version__ = '0.3'
 __author__ = 'Victor Augusto'
 __copyright__ = "Copyright (c) 2018 - Victor Augusto"
 
@@ -49,7 +49,7 @@ class Tools(object):
 
         plt.show()
 
-    def rmse(self, img1, img2):
+    def rmse(self, img1, img2, label1, label2):
         """rmse method.
 
         Calculates the root mean squared error between the ground truth image
@@ -58,9 +58,16 @@ class Tools(object):
         :param img1     Original image (ndarray).
         :param img2     Processed image (ndarray).
         """
-        ans = np.sqrt(np.linalg.norm(img1 - img2) * (1 / img2.size))
+        rmse = np.sqrt(np.linalg.norm(img1 - img2) * (1 / img2.size))
 
-        print ('RMSE: ' + '{:.4f}'.format(ans))
+        print ('RMSE (' + label1 + ' , ' + label2 + '): ' + str(rmse))
+        return rmse
+
+    def psnr(self, rmse, label1, label2):
+
+        psnr = 20 * np.log10(255 / rmse)
+
+        print ('PSNR (' + label1 + ' , ' + label2 + '): ' + str(psnr))
 
     def show_image(self, image, plot='default', dpi=100):
         """show_image method.
@@ -91,8 +98,3 @@ class Tools(object):
             plt.imshow(np.abs(image), cmap="gray")
 
         plt.show()
-
-
-    def rgb2hsv(self, img):
-        return colors.rgb_to_hsv(img)
-
