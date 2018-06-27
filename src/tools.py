@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """Tools module."""
 
-__version__ = '0.3'
+__version__ = '1.0'
 __author__ = 'Victor Augusto'
 __copyright__ = "Copyright (c) 2018 - Victor Augusto"
 
@@ -29,7 +29,6 @@ class Tools(object):
         :param data     Image to be saved in a png format file.
         :param dpi      Amount of dots per inch, the printing resolution.
         """
-        
         # Get the ndarray shape and set the amount of inches in the matplotlib figure.
         shape = np.shape(data)[0:2][::-1]
         size = [ float(i) / dpi for i in shape]
@@ -60,14 +59,23 @@ class Tools(object):
         """
         rmse = np.sqrt(np.linalg.norm(img1 - img2) * (1 / img2.size))
 
-        print ('RMSE (' + label1 + ' , ' + label2 + '): ' + str(rmse))
+        # print ('RMSE (' + label1 + ' , ' + label2 + '): ' + str(rmse))
+        print (str(rmse))
         return rmse
 
     def psnr(self, rmse, label1, label2):
+        """psnr method.
 
+        Calculates the peak signal-to-noise ratio between the ground truth image
+        and the restored one.
+        
+        :param img1     Original image (ndarray).
+        :param img2     Processed image (ndarray).
+        """
         psnr = 20 * np.log10(255 / rmse)
 
-        print ('PSNR (' + label1 + ' , ' + label2 + '): ' + str(psnr))
+        # print ('PSNR (' + label1 + ' , ' + label2 + '): ' + str(psnr))
+        print (str(psnr))
 
     def show_image(self, image, plot='default', dpi=100):
         """show_image method.

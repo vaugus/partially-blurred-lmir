@@ -1,0 +1,23 @@
+= MEAN ====================
+
+RMSE Optimal - Degraded: 0.21787195994692393
+RMSE Optimal - Restored: 0.0729139615795347
+PSNR Optimal - Degraded: 61.54056155674205
+PSNR Optimal - Restored: 70.96227089722436
+Time: 4.6339833498001095
+
+= STD =====================
+
+RMSE Optimal - Degraded: 0.04245152297970797
+RMSE Optimal - Restored: 0.010494649890870908
+PSNR Optimal - Degraded: 1.7624291834093664
+PSNR Optimal - Restored: 1.2285298048268776
+Time: 0.17906594538213064
+
+= VAR =====================
+
+RMSE Optimal - Degraded: 0.0018021318032966742
+RMSE Optimal - Restored: 0.00011013767633195675
+PSNR Optimal - Degraded: 3.1061566265330063
+PSNR Optimal - Restored: 1.5092854813479661
+Time: 0.03206461279559619

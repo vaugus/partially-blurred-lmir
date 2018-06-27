@@ -1,5 +1,0 @@
-RMSE (optimal , degraded): 0.21518491018592062
-RMSE (optimal , restored): 0.16889711476624739
-PSNR (optimal , degraded): 61.474567344327504
-PSNR (optimal , restored): 63.57835899521043
-Running time: 19.808680772781372
