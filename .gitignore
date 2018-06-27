@@ -1,2 +1,4 @@
 input/images
 input/psf
+src/*.pyc
+src/__pycache__
