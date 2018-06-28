@@ -4,8 +4,9 @@ Victor Augusto Alves Catanante - 10839918
 
 - How to run (Linux):
 
-  chmod +x execute.sh
-  ./execute.sh <method>
+  $ chmod +x execute.sh
+  
+  $ ./execute.sh <method>
 
   methods:
     - 1: inverse filtering
