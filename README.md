@@ -6,7 +6,7 @@ Victor Augusto Alves Catanante - 10839918
 
   $ chmod +x execute.sh
   
-  $ ./execute.sh <method>
+  $ ./execute.sh "method"
 
   methods:
     - 1: inverse filtering
