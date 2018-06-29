@@ -6,19 +6,36 @@ __version__ = '1.0'
 __author__ = 'Victor Augusto'
 __copyright__ = "Copyright (c) 2018 - Victor Augusto"
 
-from tools import Tools
-from point_spread_function import PSF
+import numpy as np
+import scipy.ndimage
+import time
+
 from filtering import InverseFiltering
 from filtering import WienerFiltering
 from filtering import LK_9
-
-import time
-import numpy as np
-import scipy.ndimage
+from point_spread_function import PSF
 from skimage import restoration
-
+from tools import Tools
 
 def main():
+    """main method.
+    
+    Responsible for taking the inputs and executing the selected filtering approach.
+    
+    Input parameters:
+    - method
+        1 - inverse filtering.
+        2 - wiener filtering with gamma parameter approach.
+        3 - wiener filtering with spectral estimation approach.
+        4 - skimage package wiener filtering implementation.
+        5 - skimage package richardson-lucy filtering implementation.
+        6 - laplacian kernel (9 core) convolution.
+    
+    original: path to the degraded image.
+    optimal: path to the ground truth image.
+    
+    gamma: wiener filter parameter when gamma mode is selected.
+    """
     # Initialization.
     psf = PSF()
     psf.load_point_spread_function('../input/psf/psf.jpg')

@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Tools module."""
+"""rgb2gray module.
+
+Script for converting the RBG images to grayscale.
+"""
 
 __version__ = '1.0'
 __author__ = 'Victor Augusto'

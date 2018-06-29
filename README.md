@@ -15,3 +15,5 @@ Victor Augusto Alves Catanante - 10839918
     - 4: wiener filter, as proposed by scikit-learn package
     - 5: richardson-lucy, as proposed by scikit-learn package
     - 6: laplacian kernel convolution 
+    
+- Image database: mail vaugusto92@outlook.com

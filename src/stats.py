@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""stats file."""
+"""stats file.
+
+Script for printing statistical measures about the
+restoration results.
+"""
 
 import sys
 import numpy as np
